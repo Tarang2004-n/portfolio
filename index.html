@@ -54,12 +54,12 @@
     html { 
       scroll-behavior: smooth; 
       scroll-padding-top: 2rem; 
-      background-color: transparent !important;
+      background-color: #f5f0eb;
     }
 
     body {
       font-family: var(--font-body);
-      background-color: transparent !important;
+      background-color: #f5f0eb;
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -67,23 +67,53 @@
       overflow-x: hidden;
     }
 
-    /* Fullscreen fixed animated background */
-    .bg-portrait {
+    /* ============================
+       FLOATING DOTS BACKGROUND
+       ============================ */
+    .bg-dots {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw !important;
-      height: 100vh !important;
-      object-fit: cover !important;
-      object-position: center 15% !important;
+      width: 100vw;
+      height: 100vh;
       z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
     }
 
-    /* Content wrapper — fully transparent, no blur */
+    .bg-dots .dot {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatDot linear infinite;
+    }
+
+    @keyframes floatDot {
+      0%   { transform: translateY(0) translateX(0) scale(1);   opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-110vh) translateX(var(--drift)) scale(0.8); opacity: 0; }
+    }
+
+    /* Individual dot definitions — varied size, position, speed, delay */
+    .dot:nth-child(1)  { width:6px;  height:6px;  left:8%;   bottom:-10%; background:rgba(108,92,231,0.18); animation-duration:18s; animation-delay:0s;    --drift: 30px; }
+    .dot:nth-child(2)  { width:4px;  height:4px;  left:18%;  bottom:-10%; background:rgba(108,92,231,0.12); animation-duration:24s; animation-delay:3s;    --drift:-20px; }
+    .dot:nth-child(3)  { width:8px;  height:8px;  left:30%;  bottom:-10%; background:rgba(162,155,254,0.15); animation-duration:20s; animation-delay:6s;   --drift: 15px; }
+    .dot:nth-child(4)  { width:5px;  height:5px;  left:45%;  bottom:-10%; background:rgba(108,92,231,0.10); animation-duration:28s; animation-delay:1s;    --drift:-35px; }
+    .dot:nth-child(5)  { width:7px;  height:7px;  left:58%;  bottom:-10%; background:rgba(162,155,254,0.13); animation-duration:22s; animation-delay:9s;   --drift: 25px; }
+    .dot:nth-child(6)  { width:4px;  height:4px;  left:70%;  bottom:-10%; background:rgba(108,92,231,0.16); animation-duration:30s; animation-delay:4s;    --drift:-18px; }
+    .dot:nth-child(7)  { width:6px;  height:6px;  left:82%;  bottom:-10%; background:rgba(162,155,254,0.12); animation-duration:19s; animation-delay:12s;  --drift: 22px; }
+    .dot:nth-child(8)  { width:9px;  height:9px;  left:92%;  bottom:-10%; background:rgba(108,92,231,0.09); animation-duration:26s; animation-delay:7s;    --drift:-28px; }
+    .dot:nth-child(9)  { width:4px;  height:4px;  left:25%;  bottom:-10%; background:rgba(162,155,254,0.14); animation-duration:32s; animation-delay:2s;   --drift: 10px; }
+    .dot:nth-child(10) { width:5px;  height:5px;  left:50%;  bottom:-10%; background:rgba(108,92,231,0.11); animation-duration:21s; animation-delay:15s;   --drift:-40px; }
+    .dot:nth-child(11) { width:7px;  height:7px;  left:65%;  bottom:-10%; background:rgba(162,155,254,0.10); animation-duration:25s; animation-delay:5s;   --drift: 18px; }
+    .dot:nth-child(12) { width:4px;  height:4px;  left:38%;  bottom:-10%; background:rgba(108,92,231,0.14); animation-duration:27s; animation-delay:11s;   --drift:-12px; }
+
+    /* Content wrapper */
     .content-wrapper {
       position: relative;
       z-index: 1;
-      background-color: transparent !important;
+      background-color: transparent;
       min-height: 100vh;
     }
 
@@ -701,10 +731,21 @@
 </head>
 <body>
 
-  <!-- Fullscreen fixed animated background -->
-
-
-  <!-- Frosted glass content wrapper -->
+  <!-- Floating dots background (pure CSS, no image) -->
+  <div class="bg-dots" aria-hidden="true">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>  <!-- Frosted glass content wrapper -->
   <main class="content-wrapper">
 
   <!-- ==================== HERO ==================== -->
