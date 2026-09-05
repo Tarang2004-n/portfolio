@@ -71,6 +71,7 @@
 
     /* ============================
        FLOATING DOTS BACKGROUND
+       Hardware-accelerated & responsive
        ============================ */
     .bg-dots {
       position: fixed;
@@ -81,35 +82,53 @@
       z-index: -1;
       overflow: hidden;
       pointer-events: none;
+      will-change: auto;
     }
 
     .bg-dots .dot {
       position: absolute;
       border-radius: 50%;
       opacity: 0;
+      will-change: transform, opacity;
       animation: floatDot linear infinite;
     }
 
     @keyframes floatDot {
-      0%   { transform: translateY(0) translateX(0) scale(1);   opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { transform: translateY(-110vh) translateX(var(--drift)) scale(0.8); opacity: 0; }
+      0%   { transform: translate3d(0, 0, 0) scale(1);                         opacity: 0; }
+      10%  {                                                                     opacity: 1; }
+      90%  {                                                                     opacity: 1; }
+      100% { transform: translate3d(var(--drift), -110vh, 0) scale(0.7);        opacity: 0; }
     }
 
-    /* Individual dot definitions — varied size, position, speed, delay */
-    .dot:nth-child(1)  { width:6px;  height:6px;  left:8%;   bottom:-10%; background:rgba(108,92,231,0.18); animation-duration:18s; animation-delay:0s;    --drift: 30px; }
-    .dot:nth-child(2)  { width:4px;  height:4px;  left:18%;  bottom:-10%; background:rgba(108,92,231,0.12); animation-duration:24s; animation-delay:3s;    --drift:-20px; }
-    .dot:nth-child(3)  { width:8px;  height:8px;  left:30%;  bottom:-10%; background:rgba(162,155,254,0.15); animation-duration:20s; animation-delay:6s;   --drift: 15px; }
-    .dot:nth-child(4)  { width:5px;  height:5px;  left:45%;  bottom:-10%; background:rgba(108,92,231,0.10); animation-duration:28s; animation-delay:1s;    --drift:-35px; }
-    .dot:nth-child(5)  { width:7px;  height:7px;  left:58%;  bottom:-10%; background:rgba(162,155,254,0.13); animation-duration:22s; animation-delay:9s;   --drift: 25px; }
-    .dot:nth-child(6)  { width:4px;  height:4px;  left:70%;  bottom:-10%; background:rgba(108,92,231,0.16); animation-duration:30s; animation-delay:4s;    --drift:-18px; }
-    .dot:nth-child(7)  { width:6px;  height:6px;  left:82%;  bottom:-10%; background:rgba(162,155,254,0.12); animation-duration:19s; animation-delay:12s;  --drift: 22px; }
-    .dot:nth-child(8)  { width:9px;  height:9px;  left:92%;  bottom:-10%; background:rgba(108,92,231,0.09); animation-duration:26s; animation-delay:7s;    --drift:-28px; }
-    .dot:nth-child(9)  { width:4px;  height:4px;  left:25%;  bottom:-10%; background:rgba(162,155,254,0.14); animation-duration:32s; animation-delay:2s;   --drift: 10px; }
-    .dot:nth-child(10) { width:5px;  height:5px;  left:50%;  bottom:-10%; background:rgba(108,92,231,0.11); animation-duration:21s; animation-delay:15s;   --drift:-40px; }
-    .dot:nth-child(11) { width:7px;  height:7px;  left:65%;  bottom:-10%; background:rgba(162,155,254,0.10); animation-duration:25s; animation-delay:5s;   --drift: 18px; }
-    .dot:nth-child(12) { width:4px;  height:4px;  left:38%;  bottom:-10%; background:rgba(108,92,231,0.14); animation-duration:27s; animation-delay:11s;   --drift:-12px; }
+    /* Dot palette — brighter for metallic dark bg */
+    .dot:nth-child(1)  { width:0.5vw; height:0.5vw; left:8%;   bottom:-5%; background:rgba(162,155,254,0.40); animation-duration:18s; animation-delay:0s;   --drift: 2vw;  }
+    .dot:nth-child(2)  { width:0.35vw;height:0.35vw;left:18%;  bottom:-5%; background:rgba(108,92,231,0.30);  animation-duration:24s; animation-delay:3s;   --drift:-1.5vw;}
+    .dot:nth-child(3)  { width:0.6vw; height:0.6vw; left:30%;  bottom:-5%; background:rgba(162,155,254,0.35); animation-duration:20s; animation-delay:6s;   --drift: 1vw;  }
+    .dot:nth-child(4)  { width:0.4vw; height:0.4vw; left:45%;  bottom:-5%; background:rgba(108,92,231,0.25);  animation-duration:28s; animation-delay:1s;   --drift:-2.5vw;}
+    .dot:nth-child(5)  { width:0.55vw;height:0.55vw;left:58%;  bottom:-5%; background:rgba(162,155,254,0.32); animation-duration:22s; animation-delay:9s;   --drift: 1.8vw;}
+    .dot:nth-child(6)  { width:0.35vw;height:0.35vw;left:70%;  bottom:-5%; background:rgba(108,92,231,0.38);  animation-duration:30s; animation-delay:4s;   --drift:-1.2vw;}
+    .dot:nth-child(7)  { width:0.5vw; height:0.5vw; left:82%;  bottom:-5%; background:rgba(162,155,254,0.28); animation-duration:19s; animation-delay:12s;  --drift: 1.5vw;}
+    .dot:nth-child(8)  { width:0.7vw; height:0.7vw; left:92%;  bottom:-5%; background:rgba(108,92,231,0.22);  animation-duration:26s; animation-delay:7s;   --drift:-2vw;  }
+    .dot:nth-child(9)  { width:0.3vw; height:0.3vw; left:25%;  bottom:-5%; background:rgba(162,155,254,0.34); animation-duration:32s; animation-delay:2s;   --drift: 0.8vw;}
+    .dot:nth-child(10) { width:0.4vw; height:0.4vw; left:50%;  bottom:-5%; background:rgba(108,92,231,0.28);  animation-duration:21s; animation-delay:15s;  --drift:-3vw;  }
+    .dot:nth-child(11) { width:0.55vw;height:0.55vw;left:65%;  bottom:-5%; background:rgba(162,155,254,0.25); animation-duration:25s; animation-delay:5s;   --drift: 1.3vw;}
+    .dot:nth-child(12) { width:0.35vw;height:0.35vw;left:38%;  bottom:-5%; background:rgba(108,92,231,0.32);  animation-duration:27s; animation-delay:11s;  --drift:-0.9vw;}
+
+    /* Mobile: slightly larger dots so they're visible on small screens */
+    @media (max-width: 768px) {
+      .dot:nth-child(n) {
+        min-width: 4px;
+        min-height: 4px;
+      }
+    }
+
+    /* Respect reduced-motion preferences — pause all dots */
+    @media (prefers-reduced-motion: reduce) {
+      .bg-dots .dot {
+        animation: none;
+        opacity: 0.2;
+      }
+    }
 
     /* Content wrapper */
     .content-wrapper {
