@@ -54,12 +54,14 @@
     html { 
       scroll-behavior: smooth; 
       scroll-padding-top: 2rem; 
-      background-color: #f5f0eb;
+      background-color: #f5f0eb !important;
+      background-image: none !important;
     }
 
     body {
       font-family: var(--font-body);
-      background-color: #f5f0eb;
+      background-color: #f5f0eb !important;
+      background-image: none !important;
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -726,7 +728,7 @@
       color: #fff;
     }
 
-    /* Background image is now handled by .bg-portrait element */
+   
   </style>
 </head>
 <body>
@@ -745,7 +747,9 @@
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>
-  </div>  <!-- Frosted glass content wrapper -->
+  </div>
+
+  <!-- Frosted glass content wrapper -->
   <main class="content-wrapper">
 
   <!-- ==================== HERO ==================== -->
