@@ -178,11 +178,11 @@
 
     /* Spatial glass panel */
     .section-glass-panel {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(240, 238, 235, 0.82);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       padding: 40px;
       border-radius: 24px;
     }
@@ -429,32 +429,24 @@
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 500;
-      color: var(--text);
+      color: #333;
       cursor: pointer;
       user-select: none;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
-      /* Clay 3D pill */
-      background: var(--surface-light);
-      box-shadow:
-        6px 6px 14px var(--clay-shadow-outer),
-        inset 3px 3px 6px var(--clay-shadow-light),
-        inset -3px -3px 7px var(--clay-shadow-dark);
+      /* Clean white pill */
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .skill-badge:hover {
       transform: translateY(-2px);
-      box-shadow:
-        8px 8px 20px var(--clay-shadow-outer),
-        inset 3px 3px 6px var(--clay-shadow-light),
-        inset -3px -3px 7px var(--clay-shadow-dark);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
 
     .skill-badge:active {
       transform: scale(0.95);
-      box-shadow:
-        2px 2px 6px var(--clay-shadow-outer),
-        inset 4px 4px 8px var(--clay-shadow-dark),
-        inset -3px -3px 6px var(--clay-shadow-light);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
     .skill-category {
@@ -561,14 +553,14 @@
       align-items: center;
       gap: 1rem;
       padding: 0.75rem 1.5rem;
-      background: rgba(245, 240, 235, 0.6);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--glass-border);
+      background: rgba(40, 40, 45, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 60px;
       box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 2px 8px rgba(0, 0, 0, 0.04);
+        0 8px 32px rgba(0, 0, 0, 0.25),
+        0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .floating-bar a.bar-link {
@@ -578,19 +570,17 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      color: var(--text-muted);
+      color: #333;
       text-decoration: none;
-      transition: transform 0.2s ease, color 0.2s ease;
-      background: var(--surface-light);
-      box-shadow:
-        4px 4px 10px var(--clay-shadow-outer),
-        inset 2px 2px 4px var(--clay-shadow-light),
-        inset -2px -2px 5px var(--clay-shadow-dark);
+      transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     }
 
     .floating-bar a.bar-link:hover {
       transform: translateY(-3px);
       color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     }
 
     .floating-bar a.bar-link svg {
@@ -893,38 +883,38 @@
   <section id="skills">
     <div class="container section-glass-panel" style="position:relative;">
       <div class="blob blob-2"></div>
-      <h2 class="section-title reveal">Technical Skills</h2>
+      <h2 class="section-title reveal" style="text-align:left;">Technical Skills<span style="display:block;width:60px;height:4px;background:var(--accent);border-radius:4px;margin-top:8px;"></span></h2>
 
       <div class="skills-cluster reveal">
-        <!-- Languages -->
-        <div class="skill-category">Languages</div>
+        <!-- Core -->
+        <div class="skill-category">Core</div>
         <span class="skill-badge">Python</span>
         <span class="skill-badge">R</span>
         <span class="skill-badge">C++</span>
         <span class="skill-badge">SQL</span>
         <span class="skill-badge">Bash / Shell</span>
 
-        <!-- Core ML & DL -->
-        <div class="skill-category">Core ML &amp; Deep Learning</div>
+        <!-- Machine Learning & AI -->
+        <div class="skill-category">Machine Learning &amp; AI</div>
         <span class="skill-badge">PyTorch</span>
-        <span class="skill-badge">Scikit-learn</span>
+        <span class="skill-badge">scikit-learn</span>
         <span class="skill-badge">XGBoost</span>
         <span class="skill-badge">Keras</span>
         <span class="skill-badge">caret</span>
         <span class="skill-badge">e1071</span>
-
-        <!-- Specialized ML -->
-        <div class="skill-category">Specialized ML &amp; Architectures</div>
         <span class="skill-badge">GNNs</span>
         <span class="skill-badge">Neural ODEs</span>
+
+        <!-- Frameworks & Research -->
+        <div class="skill-category">Frameworks &amp; Research</div>
         <span class="skill-badge">Generative Diffusion Models</span>
         <span class="skill-badge">Multi-Agent RL (MAPPO)</span>
         <span class="skill-badge">Offline RL (CQL)</span>
         <span class="skill-badge">RAG</span>
-        <span class="skill-badge">MLPs</span>
 
-        <!-- Data & Spatial -->
-        <div class="skill-category">Data &amp; Spatial Engineering</div>
+        <!-- Libraries & Data Processing -->
+        <div class="skill-category">Libraries &amp; Data Processing</div>
+        <span class="skill-badge">MLPs</span>
         <span class="skill-badge">NumPy</span>
         <span class="skill-badge">Pandas</span>
         <span class="skill-badge">SciPy</span>
@@ -933,13 +923,10 @@
         <span class="skill-badge">raster</span>
         <span class="skill-badge">magick</span>
         <span class="skill-badge">Feature Extraction Pipelines</span>
-
-        <!-- MLOps -->
-        <div class="skill-category">MLOps, Deployment &amp; Tools</div>
-        <span class="skill-badge">Docker</span>
+        <span class="skill-badge">Dash</span>
         <span class="skill-badge">Streamlit</span>
-        <span class="skill-badge">Git / GitHub</span>
-        <span class="skill-badge">CI / CD</span>
+        <span class="skill-badge">Git / GitLab</span>
+        <span class="skill-badge">CI/CD</span>
       </div>
     </div>
   </section>
